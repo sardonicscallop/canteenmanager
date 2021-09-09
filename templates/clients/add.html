@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block header %}
+    <h2 class="my-4 border-bottom">Add new client</h2>
+{% endblock %}
+{% block title %}Add client{% endblock %}
+{% block customstyles %}
+{% endblock %}
+{% block toolbar %}
+{% endblock %}
+{% block content %}
+    <form>
+    <div class="row mb-3">
+      <label for="inputName" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input id="inputName" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputSurname" class="col-sm-2 col-form-label">Surname</label>
+      <div class="col-sm-10">
+        <input id="inputSurname" class="form-control">
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPesel" class="col-sm-2 col-form-label">PESEL</label>
+      <div class="col-sm-10">
+        <input id="inputPesel" class="form-control" aria-describedby="peselHelpInline">
+        <span id="peselHelpInline" class="form-text">
+          If client doesn't have one, leave this field empty.
+        </span>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputPassport" class="col-sm-2 col-form-label">Passport №</label>
+      <div class="col-sm-10">
+        <input id="inputPassport" class="form-control" aria-describedby="passportHelpInline">
+        <span id="passportHelpInline" class="form-text">
+          Use this field for non-Polish citizens without assigned PESEL number.
+        </span>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="inputClass" class="col-sm-2 col-form-label">Class</label>
+      <div class="col-sm-10">
+        <input id="inputClass" class="form-control">
+      </div>
+    </div>
+      <button type="submit" class="btn btn-primary">
+          <i class="icon icon_dialog-ok-apply"></i>
+          Apply
+      </button>
+      <button class="btn btn-secondary" onclick="history.back();">
+          <i class="icon icon_dialog-cancel"></i>
+          Cancel
+      </button>
+    </form>
+{% endblock %}

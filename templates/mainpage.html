@@ -1,0 +1,71 @@
+{% extends 'bareminimum.html' %}
+{% block title %}Main page{% endblock %}
+{% block customstyles %}
+    <link href="{{ url_for('static', filename='mainpage.css') }}" rel="stylesheet">
+{% endblock %}
+{% block page %}
+    <div class="container">
+     <h1 class="pb-2 border-bottom">Welcome, {{ g.user['username'] }}.</h1>
+     <h2 class="pb-2">What do you need to do?</h2>
+    </div>
+  <div class="container px-4 py-5" id="icon-grid">
+
+
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-4 g-4 py-5">
+      <div class="col d-flex align-items-start">
+          <a href="{{ url_for('clients.browse_clients') }}" class="mainpage_button">
+            <i class="icon icon_edit-group mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Browse clients</h4>
+              <p>Find and edit each client profile.</p>
+            </div>
+          </a>
+      </div>
+      <div class="col d-flex align-items-start">
+          <a href="{{ url_for('clients.add_client') }}" class="mainpage_button">
+            <i class="icon icon_document-new mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Add client</h4>
+              <p>Add new client to the database.</p>
+            </div>
+          </a>
+      </div>
+      <div class="col d-flex align-items-start">
+          <a href="" class="mainpage_button">
+            <i class="icon icon_code-block mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Classes</h4>
+              <p>Browse classes.</p>
+            </div>
+          </a>
+      </div>
+      <div class="col d-flex align-items-start">
+          <a href="{{ url_for('subscriptions.browse_subscription_types') }}" class="mainpage_button">
+            <i class="icon icon_view-financial-account-credit-card mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Subscription types</h4>
+              <p>Browse, add, modify or delete subscription types.</p>
+            </div>
+          </a>
+      </div>
+      <div class="col d-flex align-items-start">
+          <a href="" class="mainpage_button">
+            <i class="icon icon_document-print mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Print new IDs</h4>
+              <p>Batch printing of new ID cards.</p>
+            </div>
+          </a>
+      </div>
+      <div class="col d-flex align-items-start">
+          <a href="{{ url_for('configure.configure') }}" class="mainpage_button">
+            <i class="icon icon_configure mainpage-icon"></i>
+            <div>
+              <h4 class="fw-bold mb-0">Configure</h4>
+              <p>Tune settings and manage user accounts.</p>
+            </div>
+          </a>
+      </div>
+    </div>
+  </div>
+{% endblock %}
