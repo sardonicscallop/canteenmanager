@@ -65,7 +65,16 @@
    {% for message in get_flashed_messages() %}
      <div class="flash">{{ message }}</div>
    {% endfor %}
-  {% block toolbar %}{% endblock %}
+   {% if toolbar %}
+        <nav class="nav">
+        {% for item in toolbar %}
+            <a class="nav-link" id="{{ item.name }}" {% if item.href %}href="{{ url_for(item.href) }}"{% endif %}>
+                <i class="icon {{ item.icon }}"></i>
+                <span>{{ item.text }}</span>
+            </a>
+        {% endfor %}
+        </nav>
+   {% endif %}
     <div class="container my-2 py-2">
    {% block content %}{% endblock %}
     </div>

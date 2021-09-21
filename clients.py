@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for, g, session
 from app import db
+from toolbar import ToolbarItem
 import models
 
 bp = Blueprint('clients', __name__, url_prefix='/clients')
@@ -19,8 +20,15 @@ def load_logged_in_user():
 
 @bp.route('/browse')
 def browse_clients():
+    toolbar = (
+        ToolbarItem("icon_edit-find", "find", "Find...", ""),
+        ToolbarItem("icon_list-add", "add", "Add", "clients.add_client"),
+        ToolbarItem("icon_document-properties", "show", "View details", "clients.show_client"),
+        ToolbarItem("icon_document-edit", "edit", "Edit", "clients.modify_client"),
+        ToolbarItem("icon_edit-delete", "delete", "Delete", "clients.delete_client")
+    )
     clients = models.Client.query.all()
-    return render_template('clients/browse.html', clients=clients)
+    return render_template('clients/browse.html', clients=clients, toolbar=toolbar)
 
 
 @bp.route('/add', methods=('GET', 'POST'))
