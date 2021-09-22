@@ -33,6 +33,8 @@ def browse_clients():
 
 @bp.route('/add', methods=('GET', 'POST'))
 def add_client():
+    page_name = "Add new client"
+
     if request.method == 'POST':
         name = request.form['name']
         surname = request.form['surname']
@@ -61,7 +63,7 @@ def add_client():
                 else:
                     return redirect(url_for("auth.login"))
         flash(error)
-    return render_template('clients/add.html')
+    return render_template("clients/add.html", page_name=page_name)
 
 
 @bp.route('/show')

@@ -59,9 +59,10 @@
 </nav>
   <!--<div class="b-example-divider"></div> -->
   <section class="content">
+  {%  if page_name %}
    <header class="container">
-{% block header %}{% endblock %}
-   </header>
+    <h2 class="my-4 border-bottom">{{ page_name }}</h2>
+   </header> {% endif %}
    {% for message in get_flashed_messages() %}
      <div class="flash">{{ message }}</div>
    {% endfor %}
