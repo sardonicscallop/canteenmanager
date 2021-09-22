@@ -48,7 +48,7 @@ def add_client():
             error = 'Name is required.'
         elif not surname:
             error = 'Surname is required.'
-        elif not pesel or not passport_no:
+        elif not pesel and not passport_no:
             error = 'Either pesel or passport no. is required.'
 
         if error is None:
