@@ -49,7 +49,7 @@ def add_client():
         elif not surname:
             error = 'Surname is required.'
         elif not pesel and not passport_no:
-            error = 'Either pesel or passport no. is required.'
+            error = 'Either PESEL or passport no. is required.'
 
         if error is None:
             client = models.Client(name, surname, pesel, passport_no, st_class)
@@ -64,10 +64,12 @@ def add_client():
                     client.new_id()
                     attempts += 1
                 else:
+                    info = f"Client {client.name} {client.surname} registered successfully with ID {client.id}."
+                    flash(info, "success")
                     break
 
         if error:
-            flash(error)
+            flash(error, "error")
     return render_template("clients/add.html", page_name=page_name)
 
 

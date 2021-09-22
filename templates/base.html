@@ -63,8 +63,17 @@
    <header class="container">
     <h2 class="my-4 border-bottom">{{ page_name }}</h2>
    </header> {% endif %}
-   {% for message in get_flashed_messages() %}
-     <div class="flash">{{ message }}</div>
+   {% for message in get_flashed_messages(category_filter=["error"]) %}
+     <div class="alert alert-danger">{{ message }}</div>
+   {% endfor %}
+   {% for message in get_flashed_messages(category_filter=["success"]) %}
+     <div class="alert alert-success">{{ message }}</div>
+   {% endfor %}
+   {% for message in get_flashed_messages(category_filter=["warning"]) %}
+     <div class="alert alert-warning">{{ message }}</div>
+   {% endfor %}
+   {% for message in get_flashed_messages(category_filter=["info"]) %}
+     <div class="alert alert-info">{{ message }}</div>
    {% endfor %}
    {% if toolbar %}
         <nav class="nav">
