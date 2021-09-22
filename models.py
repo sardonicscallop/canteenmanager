@@ -23,6 +23,9 @@ class Client(db.Model):
         self.passport_no = passport_no
         self.st_class = st_class
 
+    def new_id(self):
+        self.id = Decimal(randrange(100000))
+
 
 class Subscription(db.Model):
     id = db.Column(db.Integer, primary_key=True)
