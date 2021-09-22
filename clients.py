@@ -53,16 +53,21 @@ def add_client():
 
         if error is None:
             client = models.Client(name, surname, pesel, passport_no, st_class)
-            while error is not None:
+            attempts = 0
+            while attempts < 5:
                 try:
                     db.session.add(client)
+                    db.session.commit()
                 except db.session.IntegrityError:
                     error = f"Client {client.id} is already registered."
                     print(error)
                     client.new_id()
+                    attempts += 1
                 else:
-                    return redirect(url_for("auth.login"))
-        flash(error)
+                    break
+
+        if error:
+            flash(error)
     return render_template("clients/add.html", page_name=page_name)
 
 
