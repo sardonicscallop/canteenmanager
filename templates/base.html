@@ -65,7 +65,7 @@
    </header> {% endif %}
 
    {% if toolbar %}
-        <nav class="nav">
+        <nav class="nav border-bottom">
         {% for item in toolbar %}
             <a class="nav-link" id="{{ item.name }}" {% if item.href %}href="{{ url_for(item.href) }}"{% endif %}>
                 <i class="icon {{ item.icon }}"></i>
